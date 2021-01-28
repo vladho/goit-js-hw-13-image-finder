@@ -1,32 +1,38 @@
 import './styles.css';
 import gallery from './handelbars/gallery.hbs';
 import debounce from 'lodash.debounce';
+import service from './js/service';
 
-const apiKey = '20058045-402601a29cd896992a9fb1581';
 const galleryRef = document.querySelector('.js-gallery');
 const inputRef = document.querySelector('[name="query"]');
+const btnRef = document.querySelector('.btn');
 
-// const fetchResult = () => {
-//   return fetch(
-//     `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=что_искать&page=номер_страницы&per_page=12&key=твой_ключ`,
-//   ).then(responce => responce.json());
-// };
-// console.log(fetchResult);
-
-const pageNumber = 1;
+service.query = inputRef.value;
 inputRef.addEventListener(
   'input',
   debounce(() => {
-    // console.log(fetchResult);
-    fetch(
-      `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${inputRef.value}&page=${pageNumber}&per_page=12&key=${apiKey}`,
-    )
-      .then(responce => responce.json())
-      .then(data => {
+    if (inputRef.value.length === 0) {
+      galleryRef.innerHTML = '';
+      btnRef.classList.add('is-hidden');
+    } else {
+      service.fetchData().then(data => {
         galleryRef.innerHTML = '';
-        //   data.hits
         const markup = gallery(data.hits);
         galleryRef.insertAdjacentHTML('beforeend', markup);
+        btnRef.classList.remove('is-hidden');
       });
+    }
   }, 1000),
 );
+
+btnRef.addEventListener('click', () => {
+  service.fetchData().then(data => {
+    const markup = gallery(data.hits);
+    galleryRef.insertAdjacentHTML('beforeend', markup);
+    window.scrollTo({
+      top: 100000,
+      left: 10,
+      behavior: 'smooth',
+    });
+  });
+});
