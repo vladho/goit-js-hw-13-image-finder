@@ -90,3 +90,41 @@ li {
 .is-hidden {
   display: none;
 }
+
+/* создаем модалку */
+
+.lightbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position: relative; */
+  top: 0;
+  left: 0;
+  /* width: 100%; */
+  /* height: 100%; */
+  opacity: 0;
+  pointer-events: none;
+  /* transition: opacity var(--animation-duration) var(--timing-function); */
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.lightbox__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* .lightbox.is-open .lightbox__content {
+  transform: scale(1);
+} */
+
+.carousel-image {
+  height: 600px;
+}
