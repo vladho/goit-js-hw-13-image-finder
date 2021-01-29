@@ -33,6 +33,38 @@
       <button type="button" class="button js-btn is-hidden btn btn-link">
         Показать еще
       </button>
+
+      <!-- создаем модалку -->
+      <button type="button" class="js-button">включить модалку</button>
+      <div class="lightbox js-lightbox">
+        <div class="lightbox__overlay"></div>
+
+        <div
+          id="carouselExampleControls"
+          class="carousel slide js-lightbox"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner js-carousel-inner"></div>
+          <a
+            class="carousel-control-prev"
+            href="#carouselExampleControls"
+            role="button"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#carouselExampleControls"
+            role="button"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </a>
+        </div>
+      </div>
       <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"

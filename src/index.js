@@ -1,5 +1,6 @@
 import './styles.css';
 import gallery from './handelbars/gallery.hbs';
+import carousel from './handelbars/carousel.hbs';
 import debounce from 'lodash.debounce';
 import service from './js/service';
 
@@ -36,7 +37,22 @@ btnRef.addEventListener('click', () => {
     });
   });
 });
+//modalka
 
-galleryRef.addEventListener('click', event => {
-  console.log(event);
+const carouselInner = document.querySelector('.js-carousel-inner');
+const openModalRef = document.querySelector('.js-button');
+const openModal = document.querySelector('.js-lightbox');
+
+openModalRef.addEventListener('click', event => {
+  event.preventDefault;
+  // console.log(event);
+  service.fetchData().then(data => {
+    console.log(openModal);
+    openModal.classList.add('is-open');
+    const markup = carousel(data.hits);
+    carouselInner.insertAdjacentHTML('beforeend', markup);
+    const carouselItem = carouselInner.querySelector('.carousel-item');
+    carouselItem.classList.add('active');
+    const testRef = document.querySelectorAll('.test');
+  });
 });
