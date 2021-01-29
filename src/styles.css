@@ -53,9 +53,15 @@ li {
   width: 280px;
   object-fit: fill;
 }
+.image:hover {
+  transform: scale(1.04);
+  cursor: zoom-in;
+}
+
 .stats {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .stats-item {
@@ -66,17 +72,21 @@ li {
   margin-bottom: 5px;
 }
 
-.btn {
-  display: flex;
-  background-color: blue;
-  color: white;
+.button {
+  /* background-color: blue; */
+  /* color: white; */
 
   display: flex;
   margin-right: auto;
   margin-left: auto;
   margin-top: 20px;
+  margin-bottom: 30px;
 }
 
+.button:hover,
+.button:focus {
+  box-shadow: none;
+}
 .is-hidden {
   display: none;
 }

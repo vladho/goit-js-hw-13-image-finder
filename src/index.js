@@ -36,3 +36,7 @@ btnRef.addEventListener('click', () => {
     });
   });
 });
+
+galleryRef.addEventListener('click', event => {
+  console.log(event);
+});
